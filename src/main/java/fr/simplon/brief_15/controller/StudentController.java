@@ -32,9 +32,4 @@ public class StudentController {
         return new ResponseEntity<>(borrowedBooks, HttpStatus.OK);
     }
 
-    @PostMapping("/book/{bookId}/borrow/{studentId}")
-    public ResponseEntity<Book> borrowBook(@PathVariable Long bookId, @PathVariable Long studentId) {
-        Book borrowedBook = bookService.borrowBook(bookId, studentId);
-        return new ResponseEntity<>(borrowedBook, HttpStatus.OK);
-    }
 }

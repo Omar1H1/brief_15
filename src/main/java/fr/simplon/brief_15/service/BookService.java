@@ -6,6 +6,7 @@ import fr.simplon.brief_15.repository.BookRepository;
 import fr.simplon.brief_15.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -42,5 +43,9 @@ public class BookService {
         } else {
             throw new RuntimeException("Book not found");
         }
+    }
+
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
     }
 }
