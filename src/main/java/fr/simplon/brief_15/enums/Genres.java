@@ -16,5 +16,5 @@ public enum Genres {
     YOUNG_ADULT,
     CLASSIC,
     POETRY,
-    DYSTOPIAN;
+    DYSTOPIAN
 }

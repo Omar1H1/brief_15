@@ -26,9 +26,14 @@ public class BookController {
     }
 
     @PostMapping("/book/{bookId}/borrow/{studentId}")
-    public ResponseEntity<Book> borrowBook(@PathVariable Long bookId, @PathVariable Long studentId) {
-        Book borrowedBook = bookService.borrowBook(bookId, studentId);
-        return new ResponseEntity<>(borrowedBook, HttpStatus.OK);
+    public ResponseEntity<?> borrowBook(@PathVariable Long bookId, @PathVariable Long studentId) {
+        try {
+            Book borrowedBook = bookService.borrowBook(bookId, studentId);
+            return new ResponseEntity<>(borrowedBook, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(e.getMessage(),null, HttpStatus.BAD_REQUEST);
+        }
+
     }
 
     @GetMapping("/book")

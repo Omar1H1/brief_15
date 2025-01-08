@@ -4,6 +4,7 @@ import fr.simplon.brief_15.models.Book;
 import fr.simplon.brief_15.models.Student;
 import fr.simplon.brief_15.repository.BookRepository;
 import fr.simplon.brief_15.repository.StudentRepository;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class BookService {
         return bookRepository.save(book);
     }
 
+    @SneakyThrows
     public Book borrowBook(Long bookId, Long studentId) {
         Optional<Book> optionalBook = bookRepository.findById(bookId);
         if (optionalBook.isPresent()) {

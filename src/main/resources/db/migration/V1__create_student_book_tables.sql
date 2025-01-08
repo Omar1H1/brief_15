@@ -9,7 +9,6 @@ CREATE TABLE student (
     CONSTRAINT pk_student PRIMARY KEY (id)
 );
 
--- Create the book table
 CREATE TABLE book (
     id BIGINT NOT NULL DEFAULT nextval('book_seq'),
     title VARCHAR(255),
@@ -26,6 +25,3 @@ CREATE TABLE book_genres (
 
 ALTER TABLE book
     ADD CONSTRAINT FK_BOOK_ON_STUDENT FOREIGN KEY (student_id) REFERENCES student (id);
-
-ALTER TABLE book
-    ADD created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
