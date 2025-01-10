@@ -50,4 +50,20 @@ public class BookService {
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
+
+//    public Optional<Book> getMostPopularAvailableBook() {
+//        return bookRepository.findMostPopularAvailableBook();
+//    }
+
+    public Book returnBook(Long bookId) {
+        Optional<Book> optionalBook = bookRepository.findById(bookId);
+        if (optionalBook.isPresent()) {
+            Book book = optionalBook.get();
+            book.setAvailable(true);
+            book.setBorrower(null);
+            return bookRepository.save(book);
+        } else {
+            throw new RuntimeException("Book not found");
+        }
+    }
 }
